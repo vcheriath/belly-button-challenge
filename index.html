@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bellybutton Biodiversity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Belly Button Biodiversity Dashboard</h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Test Subject ID No.:</h5>
+          <select id="selDataset">
+            <!--onchange="optionChanged(this.value)">-->
+            <!--
+            <script>
+              //let optionList = document.getElementById('rec_mode').options;
+                let options = ["940", "941", "943", "944", "945", "946", "947", "948", "949", "950", "952", "953", "954", 
+                "955", "956", "958", "959", "960", "961", "962", "963", "964", "966", "967", "968", "969", "970", "971", 
+                "972", "973", "974", "975", "978", "1233", "1234", "1235", "1236", "1237", "1238", "1242", "1243", 
+                "1246", "1253", "1254", "1258", "1259", "1260", "1264", "1265", "1273", "1275", "1276", "1277", "1278", "1279", 
+                "1280", "1281", "1282", "1283", "1284", "1285", "1286", "1287", "1288", "1289", "1290", "1291", "1292", "1293", 
+                "1294", "1295", "1296", "1297", "1298", "1308", "1309", "1310", "1374", "1415", "1439", "1441", "1443", "1486", 
+                "1487", "1489", "1490", "1491", "1494", "1495", "1497", "1499", "1500", "1501", "1502", "1503", "1504", "1505", 
+                "1506", "1507", "1508", "1510", "1511", "1512", "1513", "1514", "1515", "1516", "1517", "1518", "1519", "1521", 
+                "1524", "1526", "1527", "1530", "1531", "1532", "1533", "1534", "1535", "1536", "1537", "1539", "1540", "1541", 
+                "1542", "1543", "1544", "1545", "1546", "1547", "1548", "1549", "1550", "1551", "1552", "1553", "1554", "1555", 
+                "1556", "1557", "1558", "1561", "1562", "1563", "1564", "1572", "1573", "1574", "1576", "1577", "1581", "1601"
+              ];
+
+              var selectBox = document.getElementById('rec_mode');
+
+              for(var i = 0, l = options.length; i < l; i++){
+                var option = options[i];
+                selectBox.options.add( new Option(option, option, option.selected) );
+              }
+            </script>
+            -->
+            
+            <option value="940">940</option>
+            <option value="941">941</option>
+            <option value="943">943</option>
+            <option value="944">944</option>
+            <option value="945">945</option>
+            <option value="946">946</option>
+            <option value="947">947</option>
+            <option value="948">948</option>
+            <option value="949">949</option>
+            <option value="950">950</option>
+            <option value="952">952</option> 
+            <option value="953">953</option>
+            <option value="954">954</option>  
+            <option value="955">955</option> 
+            <option value="956">956</option>
+            <option value="958">958</option>
+            <option value="959">959</option>
+            <option value="960">960</option>
+            <option value="961">961</option>
+            <option value="962">962</option>
+            <option value="963">963</option>
+            <option value="964">964</option>
+            <option value="966">966</option> 
+            <option value="967">967</option>    
+            <option value="968">968</option>
+            <option value="969">969</option>
+            <option value="970">970</option>
+            <option value="971">971</option>
+            <option value="972">972</option> 
+            <option value="973">973</option> 
+            <option value="974">974</option> 
+            <option value="975">975</option>        
+            <option value="978">978</option>
+            <option value="1233">1233</option>
+            <option value="1233">1233</option> 
+            
+          </select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body">
+              <div>id: </div>
+              <div id="id">940</div>
+              <br>
+              
+              <div>ethnicity: </div>
+              <div id="ethnicity">Caucasian</div>
+              <br>
+
+              <div>gender: </div>
+              <div id="gender">F</div>
+              <br>
+              
+              <div>age: </div>
+              <div id="age">24</div>
+              <br>
+              
+              <div>location: </div>
+              <div id="location">Beaufort/NC</div>
+              <br>
+
+              <div>bbtype: </div>
+              <div id="bbtype">I</div>
+              <br>
+
+              <div>wfreq: </div>
+              <div id="wfreq">2</div>
+              <br>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="bar"></div>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="./static/js/app.js"></script>
+  
+  <!--<script src="./static/js/bonus.js"></script>-->
+
+</body>
+
+</html>
